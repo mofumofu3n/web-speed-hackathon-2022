@@ -2,6 +2,8 @@
 const path = require("path");
 
 const CopyPlugin = require("copy-webpack-plugin");
+const ImageminMozjpeg = require('imagemin-mozjpeg');
+const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const nodeExternals = require("webpack-node-externals");
 
 function abs(...args) {
@@ -57,12 +59,21 @@ module.exports = [
       new CopyPlugin({
         patterns: [{ from: PUBLIC_ROOT, to: DIST_PUBLIC }],
       }),
+      new ImageminPlugin({
+        test: /\.(jpe?g)$/i,
+        plugins: [
+          ImageminMozjpeg({
+            quality: 85,
+            progressive: true,
+          }),
+        ],
+      }),
     ],
     resolve: {
       extensions: [".js", ".jsx"],
     },
     target: "web",
-  },
+    },
   {
     devtool: "inline-source-map",
     entry: path.join(SRC_ROOT, "server/index.js"),
