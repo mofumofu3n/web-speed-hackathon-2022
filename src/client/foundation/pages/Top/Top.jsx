@@ -148,7 +148,7 @@ export const Top = () => {
 
   return (
     <Container>
-      <HeroImage url="https://res.cloudinary.com/dvfdsumv5/image/upload/c_scale,q_auto:good,w_1240/v1667671592/cyber-ticket/images/hero.jpg" />
+      <HeroImage url="https://res.cloudinary.com/dvfdsumv5/image/upload/c_scale,q_auto:good,w_1240/v1667671592/cyber-ticket/assets/images/hero.jpg" />
 
       <Spacer mt={Space * 2} />
       {userData && (
